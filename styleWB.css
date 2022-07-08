@@ -29,9 +29,6 @@ footer {
 
 .btn {
     height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .card-actions {
     font-weight: bolder;
@@ -50,4 +47,8 @@ header {
 
 #addToCart {
     border-radius: 20px;
+}
+#ammountOfEachCard {
+    display:grid;
+    grid-template-columns: 2fr 8fr 2fr;
 }
