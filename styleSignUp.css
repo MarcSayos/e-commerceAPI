@@ -1,0 +1,24 @@
+body {
+    min-height: 100vh;
+    margin:0;
+    background-image:url(https://images.pling.com/img/00/00/45/66/30/1170534/26d7fc7a2b6c04ab74f06b301bbdf88f7bfd.jpg);
+}
+
+.main-wrapper {
+    min-height: calc(100vh - 120px);
+}
+
+footer {
+    width: 100%;
+    height:60px;
+}
+
+.center {
+    height:calc(100vh - 120px); 
+    font-size:xx-large;
+}
+
+#form-wrapper {
+    max-width: 900px;
+    margin: 20px;
+}

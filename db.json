@@ -3,7 +3,12 @@
       {
         "id": 1,
         "username": "anakin",
-        "password": "jcosmvl"
+        "password": "jcosmvl",
+        "firstName": "anakin",
+        "lastName": "skywalker",
+        "address": "somewhere",
+        "city": "somewhereBigger",
+        "zip": 3141592
       }
     ],
     "cars": [
