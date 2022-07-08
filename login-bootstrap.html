@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="fonts" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styleWB.css">
+        <link rel="icon" href="iconBuildingStore.svg">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+        <script type="text/javascript" src="script.js"></script>
+        <title>E-commerce</title>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar bg-light shadow-lg position-sticky top-0">
+                <div class="container-fluid">
+                    <a class="navbar-brand">Bootstrap Web</a>
+                    <form class="d-flex">
+                        <a class="btn btn-primary d-flex align-self-center" href="signup-bootstrap.html" role="button">Sign Up</a>
+                    </form>
+                </div>
+            </nav>
+
+        </header>
+        <main class="main-wrapper">
+            <div class="center d-flex align-items-center justify-content-center">
+                <div class="card">
+                    <div class="card-header d-flex px-4 py-3 align-items-center">
+                        <ion-icon name="key-outline"></ion-icon>
+                    </div>
+                    <form id="signinForm" class="card-body" onsubmit="return handleSubmit(event)">
+                        <div class="usernameDiv d-flex mt-2 align-items-center">
+                            <h5 class="card-title mx-3">Username</h5>
+                            <div class="input-group has-validation">
+                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                <input type="text" placeholder="Marc" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend">
+                                <div class="invalid-feedback">
+                                Please choose a username.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="passwordDiv d-flex mt-2 align-items-center pb-2">
+                            <h5 class="card-title mx-3">Password</h5>
+                            <input type="Password"  placeholder="*******" class="form-control" id="validationCustomPassword">
+                        </div>
+                        <div id="emptyContainer"></div>
+                        <button class="btn btn-primary" type="submit">Log In</button>
+                        <!-- <a href="index.html" class="btn btn-primary">Log In</a> -->
+                    </form>
+                </div>
+            </div>
+        </main>
+        <footer class="footr bg-light position-sticky bottom-0 p-2">
+            <div class="bottomNavBar d-flex flex-row justify-content-center">
+                <form class="d-flex align-self-center mx-4">
+                    <a class="btn btn-secondary d-flex align-self-center" href="https://instagram.com" role="button">
+                        <ion-icon size='large' name="logo-instagram"></ion-icon>
+                    </a>
+                </form>
+                <form class="d-flex mx-4">
+                    <a class="btn btn-secondary d-flex align-self-center" href="https://linkedin.com" role="button">
+                        <ion-icon size='large' name="logo-linkedin"></ion-icon>
+                    </a>
+                </form>
+                <form class="d-flex mx-4">
+                    <a class="btn btn-secondary d-flex align-self-center" href="https://twitter.com" role="button">
+                        <ion-icon size='large' name="logo-twitter"></ion-icon>
+                    </a>
+                </form>
+            </div>
+        </footer>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>    
+    </body>
+</html>
