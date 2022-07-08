@@ -1,12 +1,6 @@
-window.onload = function(){
-    console.log("onload")
-    loadCards();
-}
-// is equivalent to 
-// window.onload = () => {}
+const url = "https://e-commerceapi-production.up.railway.app";
 
-//document.getElementById("formulario").addEventListener("submit", getFormData);
-
+// #region login
 const popAlert = (name) => {
     console.log(name, " is empty")
     const newP = document.createElement("p");
@@ -30,7 +24,6 @@ function handleSubmit(event) {
     //
     if (username.value !== "" && password.value !== "") {
         console.log(username.value, password.value);
-        let url = location.href;
         location.href = "index.html";
     }
     else {
@@ -43,122 +36,67 @@ function handleSubmit(event) {
     }
 }
 
-// const str = `asdf ${window}`;
-
-// $().add(
-//     `<div>
-//         <img src=${asdf}>
-//     </div>`
-// )
-
-const db = [
-    {
-        url: "https://cdn.motor1.com/images/mgl/WVJ9q/s3/lanzamiento-ferrari-488-pista.jpg",
-        name: "Ferrari 488",
-        desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    },
-    {
-        url: "https://www.diariomotor.com/imagenes/picscache/1920x1600c/lamborghini-aventador-ultimae-031_1920x1600c.jpg",
-        name: "Lamborghini Aventador",
-        desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    },
-    {
-        url: "https://i0.wp.com/asphalt9.info/wp-content/uploads/2019/08/Porsche-911-GT3-RS.jpg?fit=1062%2C588&ssl=1",
-        name: "Porsche 911 GT3 RS",
-        desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    },
-    {
-        url: "https://fotografias.lasexta.com/clipping/cmsimages02/2018/12/09/E19424F5-9FEE-4DE1-B3CB-FB33A6CE5874/98.jpg?crop=1500,844,x0,y142&width=1900&height=1069&optimize=high&format=webply",
-        name: "Mclaren 720s",
-        desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    },
-    {
-        url: "https://cdn-images.motor.es/image/m/800w/fotos-noticias/2020/07/mercedes-amg-gt-black-series-2021-202069154-1594802419_1.jpg",
-        name: "Mercedes AMG GT Black Series",
-        desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    },
-    {
-        url: "https://www.autonocion.com/wp-content/uploads/2022/03/Aston-Martin-Vantage-Addarmor-6-1130x636.jpg",
-        name: "Aston Martin Vantage",
-        desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    },
-    {
-        url: "https://i0.wp.com/asphalt9.info/wp-content/uploads/2018/07/Bugatti-Chiron.jpg?resize=750%2C415&ssl=1",
-        name: "Bugatti Chiron",
-        desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    },
-    {
-        url: "https://cdn.motor1.com/images/mgl/WVJ9q/s3/lanzamiento-ferrari-488-pista.jpg",
-        name: "Ferrari 488",
-        desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    },
-    {
-        url: "https://www.diariomotor.com/imagenes/picscache/1920x1600c/lamborghini-aventador-ultimae-031_1920x1600c.jpg",
-        name: "Lamborghini Aventador",
-        desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    },
-    {
-        url: "https://i0.wp.com/asphalt9.info/wp-content/uploads/2019/08/Porsche-911-GT3-RS.jpg?fit=1062%2C588&ssl=1",
-        name: "Porsche 911 GT3 RS",
-        desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    },
-    {
-        url: "https://fotografias.lasexta.com/clipping/cmsimages02/2018/12/09/E19424F5-9FEE-4DE1-B3CB-FB33A6CE5874/98.jpg?crop=1500,844,x0,y142&width=1900&height=1069&optimize=high&format=webply",
-        name: "Mclaren 720s",
-        desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    },
-    {
-        url: "https://cdn-images.motor.es/image/m/800w/fotos-noticias/2020/07/mercedes-amg-gt-black-series-2021-202069154-1594802419_1.jpg",
-        name: "Mercedes AMG GT Black Series",
-        desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    },
-    {
-        url: "https://www.autonocion.com/wp-content/uploads/2022/03/Aston-Martin-Vantage-Addarmor-6-1130x636.jpg",
-        name: "Aston Martin Vantage",
-        desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    },
-    {
-        url: "https://i0.wp.com/asphalt9.info/wp-content/uploads/2018/07/Bugatti-Chiron.jpg?resize=750%2C415&ssl=1",
-        name: "Bugatti Chiron",
-        desc: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    }
-];
+// #endregion
 
 
-function loadCards() {
-    let container = document.getElementById("row-wrapper");
-    db.forEach(element => {
-        let div = document.createElement('div');
-        div.innerHTML = 
-            `<div class="col">
+
+const load = cars => {
+    if (!cars) return;
+
+    var imgs = cars.img_url;
+    var names = cars.name;
+    var prices = cars.price;
+
+    $('#row-wrapper').replaceWith(
+        `<div id="row-wrapper" class="row m-0 row-cols-1 row-cols-md-3 g-4">
+            <!-- Aquí es carregaran els cards -->
+            <div class="col">
                 <div class="card h-100">
-                    <img src="${element.url}" class="card-img-top" alt="...">
+                    <img src="${imgs}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">${element.name}</h5>
-                        <p class="card-text">${element.desc}</p>
+                        <h5 class="card-title">${names}</h5>
+                        <h5 class="card-title">${prices}</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         <div class="col-12 px-2 position-sticky bottom-0">
                             <form class="row mx-0 px-0 justify-content-around">
-                                <button type="button" onclick="minusClicked()" class="btn btn-danger card-actions">-</button>
+                                <button id="buttonMinus" type="button" class="btn btn-danger card-actions">-</button>
                                 <input type="number" min="0" placeholder="0" class="item-count w-75">
-                                <button type="button" onclick="plusClicked()" class="btn btn-success card-actions">+</button>
+                                <button id="buttonPlus" type="button" class="btn btn-success card-actions">+</button>
                                 <button id="addToCart" type="submit" class="btn btn-primary btn-block my-2"> ADD TO CART </button>
                             </form>
                         </div>
                     </div>
                 </div>
-            </div>`;
-        container.insertBefore(div,document.getElementById("aux"));
+            </div>
+        </div>`
+    );
+};
+
+$(window).on("load",  async () => {
+    try {
+        pkmns = (await axios.get(`${url}`)).data;
+        load( pkmns[0] );
+    } catch (error) {
+        console.log(error)
+    }
+
+    $('#buttonMinus').on("click", async () => {
+        // if (id > 1) --id;
+        // else if (id === 1) id = 6;
+        // load( pkmns.find(poke => poke.id === id) );
+        console.log("minus");
     });
-}
 
-//#region ButtonClicks
-function minusClicked() {
-    console.log(x);
-}
+    // $('#send-search').on("click", async () => {
+    //     var inputVal = $('#search').val();
+    //     if(isNaN(inputVal)) load(pkmns.find(poke => poke.name === inputVal));
+    //     else load(pkmns.find(poke => poke.num === parseInt(inputVal)));
+    // });
 
-function plusClicked() {
-
-}
-
-const x = JSON.stringify(db[0]);
-//#endregion
+    $('#buttonPlus').on("click", async () => {
+        // if (id < 6) ++id;
+        // else if (id === 6) id = 1;
+        // load( pkmns.find(poke => poke.id === id) );
+        console.log("plus");
+    });
+});
