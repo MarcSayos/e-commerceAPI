@@ -54,5 +54,13 @@
         "price": "3",
         "img_url": "https://i0.wp.com/asphalt9.info/wp-content/uploads/2018/07/Bugatti-Chiron.jpg?resize=750%2C415&ssl=1"
       }
+    ],
+    "compras": [
+      {
+        "id": 1,
+        "product_name": "Bugatti Chiron",
+        "quantity": 1,
+        "totalPrice": "3"
+      }
     ]
   }

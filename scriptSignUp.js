@@ -17,7 +17,7 @@ async function writeInDB(firstName, lastName, username, password, address, city,
         console.log(error);
       });
     console.log(username.value, password.value);
-    location.href = "login-bootstrap.html";
+    location.href = "login.html";
 }
 
 const popAlert = (name) => {
@@ -75,26 +75,26 @@ const popAlert = (name) => {
     newP.className = name + "Empty text-danger text-center";
     newP.id = alertname;
     newP.style.fontSize = "large"
-    document.getElementById(fatherID).appendChild(newP);
+    if (newP !== null && fatherID !== undefined) document.getElementById(fatherID).appendChild(newP);
 }
 
 function removeExistingAlerts() {
     let firstAlert = document.getElementById("firstEmpty");
-    if (firstAlert !== null) document.getElementById("emptyContainer").removeChild(firstAlert);
+    if (firstAlert !== null) document.getElementById("fatherFirst").removeChild(firstAlert);
     let lastAlert = document.getElementById("lastEmpty");
-    if (lastAlert !== null) document.getElementById("emptyContainer").removeChild(lastAlert);
+    if (lastAlert !== null) document.getElementById("fatherLast").removeChild(lastAlert);
     let userAlert = document.getElementById("usernameEmpty");
-    if (userAlert !== null) document.getElementById("emptyContainer").removeChild(userAlert);
+    if (userAlert !== null) document.getElementById("fatherUser").removeChild(userAlert);
     let passAlert = document.getElementById("passwordEmpty");
-    if (passAlert !== null) document.getElementById("emptyContainer").removeChild(passAlert);
+    if (passAlert !== null) document.getElementById("fatherPass").removeChild(passAlert);
     let addressAlert = document.getElementById("addressEmpty");
-    if (addressAlert !== null) document.getElementById("emptyContainer").removeChild(addressAlert);
+    if (addressAlert !== null) document.getElementById("fatherAdr").removeChild(addressAlert);
     let cityAlert = document.getElementById("cityEmpty");
-    if (cityAlert !== null) document.getElementById("emptyContainer").removeChild(cityAlert);
+    if (cityAlert !== null) document.getElementById("fatherCity").removeChild(cityAlert);
     let zipAlert = document.getElementById("zipEmpty");
-    if (zipAlert !== null) document.getElementById("emptyContainer").removeChild(zipAlert);
+    if (zipAlert !== null) document.getElementById("fatherZip").removeChild(zipAlert);
     let termsAlert = document.getElementById("termsEmpty");
-    if (termsAlert !== null) document.getElementById("emptyContainer").removeChild(termsAlert);
+    if (termsAlert !== null) document.getElementById("fatherTerms").removeChild(termsAlert);
 }
 
 function handleSubmitSignUp(event) {
@@ -110,10 +110,10 @@ function handleSubmitSignUp(event) {
     let termsConditions = document.getElementById("invalidCheck");
     
     removeExistingAlerts();
-
+    console.log("Terms and conditions value: " + termsConditions.value)
     if (firstName.value === "" || lastName.value === "" || username.value === "" || 
     password.value === "" || address.value === "" || city.value === "" || 
-    zip.value === "" || termsConditions.value === "") {
+    zip.value === "" || !termsConditions.checked) {
         if (firstName.value === "") popAlert("validationCustom01");
         if (lastName.value === "")  popAlert("validationCustom02");
         if (username.value === "")  popAlert("username");
@@ -121,15 +121,11 @@ function handleSubmitSignUp(event) {
         if (address.value === "")   popAlert("validationCustom03");
         if (city.value === "")      popAlert("validationCustom04");
         if (zip.value === "")       popAlert("validationCustom05");
-        if (termsConditions.value === "") popAlert("invalidCheck");
+        if (!termsConditions.checked) popAlert("invalidCheck");
 
     }
     else {
         if (verify(username))
             writeInDB(firstName, lastName, username, password, address, city, zip);
-    }
-    
-    if (username.value !== "" && password.value !== "") {
-
     }
 }
