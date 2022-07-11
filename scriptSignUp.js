@@ -97,7 +97,7 @@ function removeExistingAlerts() {
     if (termsAlert !== null) document.getElementById("fatherTerms").removeChild(termsAlert);
 }
 
-function handleSubmitSignUp(event) {
+async function handleSubmitSignUp(event) {
     event.preventDefault();
     console.log("HI")
     let firstName = document.getElementById("validationCustom01");
@@ -125,7 +125,7 @@ function handleSubmitSignUp(event) {
 
     }
     else {
-        if (verify(username))
-            writeInDB(firstName, lastName, username, password, address, city, zip);
+        if (await verify(username))
+            await writeInDB(firstName.value, lastName.value, username.value, password.value, address.value, city.value, zip.value);
     }
 }
